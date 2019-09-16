@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EslintConfiguration">
+    <custom-configuration-file used="false" path="F:\MyProjects\React\social_network\node_modules\eslint-config-react-app\package.json" />
+    <additional-rules-dir value="F:\MyProjects\React\social_network\node_modules\eslint-config-react-app" />
+  </component>
+</project>

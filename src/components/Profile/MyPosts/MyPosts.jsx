@@ -3,21 +3,22 @@ import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-    return (
-        <div>
-            <div>
-                My posts
+    console.log ('MyPosts Props')
+    console.log(props)
+    let postsItems = props.bll.map(post => <Post id={post.id} message={post.message} likesCount={post.likesCount}/>)
 
-            </div>
+    return (
+        <div className={classes.postsBlock}>
+            {console.log(props)}
+            <h3>My posts</h3>
             <div>
                 <textarea></textarea>
-                <button>Add post</button>
-                <button>Remove</button>
+            </div>
+            <div>
+                <button onClick={ () => alert('Fuck you!')}>Add post</button>
             </div>
             <div className={classes.posts}>
-                <Post message='Hi, how are you'/>
-                <Post message="It's my first post"/>
-
+                {postsItems}
             </div>
         </div>
     )

@@ -1,17 +1,15 @@
 import React from "react";
 import classes from './Profile.module.css';
 import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
+    console.log('Profile props');
+    console.log(props);
     return (
         <div>
-            Profile
-            <img
-                src='http://www.ox.ac.uk/sites/files/oxford/styles/ow_large_feature/public/field/field_image_main/Picture%20this.jpg?itok=1ZJwGrhE'/>
-            <div>
-                ava + description
-            </div>
-            <MyPosts />
+            <ProfileInfo bll={props}/>
+            <MyPosts  bll={props}/>
         </div>
     )
 }

@@ -2,12 +2,11 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
-import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
-import News from "./components/News/News";
-import Music from "./components/Music/Music";
-import Settings from "./components/Settings/Settings";
+
+let getRoutes = (bll) => {
+    return bll.routesData.map(route => <Route path={route.path} component={route.component} key={route.path} bll={bll}/>);
+}
 
 const App = (props) => {
     return (
@@ -17,11 +16,9 @@ const App = (props) => {
                     <Header/>
                     <Navbar/>
                     <div className='app-wrapper-content'>
-                        <Route path='/dialogs' component={Dialogs}/>
-                        <Route path='/profile' component={Profile}/>
-                        <Route path='/news' component={News}/>
-                        <Route path='/music' component={Music}/>
-                        <Route path='/settings' component={Settings}/>
+                        {console.log('BrowserRouter props')}
+                        {console.log(props.bll)}
+                        {getRoutes(props.bll)}
                     </div>
                 </div>
             </div>
