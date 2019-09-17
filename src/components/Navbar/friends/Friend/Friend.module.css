@@ -1,0 +1,29 @@
+.friend {
+    display: inline-block;
+    padding: 5px;
+    width: 80px;
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.friend:hover {
+    color: black;
+}
+
+.avatar {
+    height: 50px;
+    width: 100%;
+
+}
+
+.avatar img {
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+    display: block;
+}
+
+.name {
+    width: 100%;
+    text-align: center;
+}
