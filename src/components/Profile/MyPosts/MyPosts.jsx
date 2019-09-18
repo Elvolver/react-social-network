@@ -9,8 +9,14 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        let text = newPostElement.current.value;
-        alert(text);
+        let postMessage = newPostElement.current.value;
+        props.addPost(postMessage);
+        newPostElement.current.value = '';
+    }
+
+    let exportinputValue = () => {
+        let postMessage = newPostElement.current.value;
+        props.exportinputValue(postMessage);
     }
 
     return (
@@ -18,10 +24,10 @@ const MyPosts = (props) => {
             {console.log(props)}
             <h3>My posts</h3>
             <div>
-                <textarea ref={newPostElement}></textarea>
+                <textarea ref={newPostElement} onChange={exportinputValue}></textarea>
             </div>
             <div>
-                <button onClick={addPost}>Add post</button>
+                <button onClick={addPost} >Add post</button>
             </div>
             <div className={classes.posts}>
                 {postsItems}
