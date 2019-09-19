@@ -4,36 +4,38 @@ import Post from "./Post/Post";
 
 const MyPosts = (props) => {
 
-    let postsItems = props.posts.map(post => <Post id={post.id} message={post.message} likesCount={post.likesCount}/>)
+    const postsItems = props.posts.map(post => <Post id={post.id}
+                                                     message={post.message}
+                                                     likesCount={post.likesCount}/>);
 
-    let newPostElement = React.createRef();
+    const newPostElement = React.createRef();
 
-    let addPost = () => {
-        let postMessage = newPostElement.current.value;
-        props.addPost(postMessage);
-        newPostElement.current.value = '';
-    }
+    const updateNewPostText = () => {
+        let newPostText = newPostElement.current.value;
+        let action = {type: 'UPDATE-NEW-POST-TEXT', newPostText: newPostText};
+        props.dispatch(action);
+    };
 
-    let exportinputValue = () => {
-        let postMessage = newPostElement.current.value;
-        props.exportinputValue(postMessage);
-    }
+    const addPost = () => {
+        let action = {type: 'ADD-POST'};
+        props.dispatch(action);
+    };
 
     return (
         <div className={classes.postsBlock}>
             {console.log(props)}
             <h3>My posts</h3>
             <div>
-                <textarea ref={newPostElement} onChange={exportinputValue}></textarea>
+                <textarea ref={newPostElement} onChange={updateNewPostText} value={props.newPostText}/>
             </div>
             <div>
-                <button onClick={addPost} >Add post</button>
+                <button onClick={addPost}>Add post</button>
             </div>
             <div className={classes.posts}>
                 {postsItems}
             </div>
         </div>
     )
-}
+};
 
 export default MyPosts;
