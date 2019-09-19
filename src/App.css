@@ -1,3 +1,7 @@
+#root {
+    max-width: 100%;
+}
+
 .wrapper {
     display: grid;
     grid-template-areas: "header header" "nav content";

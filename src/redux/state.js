@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
 let store = {
     _state: {
         profilePage: {
@@ -82,17 +87,18 @@ let store = {
         this._callSybscriber(this._state);
     },
     dispatch(action) {
+
         switch (action.type) {
-            case 'ADD-POST':
+            case ADD_POST:
                 this._addPost();
                 break;
-            case 'UPDATE-NEW-POST-TEXT':
+            case UPDATE_NEW_POST_TEXT:
                 this._updateNewPostText(action.newPostText);
                 break;
-            case 'ADD-MESSAGE':
+            case ADD_MESSAGE:
                 this._addMessage();
                 break;
-            case 'UPDATE-NEW-MWSSAGE-TEXT':
+            case UPDATE_NEW_MESSAGE_TEXT:
                 this._updateNewMessageText(action.newMessageText);
                 break;
             default:
@@ -100,5 +106,23 @@ let store = {
         }
     }
 };
+
+export const updateNewPostTextActionCreator = (newPostText) => {
+    return {type: UPDATE_NEW_POST_TEXT, newPostText: newPostText}
+};
+
+export const addPostActionCreator = () => {
+    return {type: ADD_POST}
+};
+
+export const updateNewMessageTextActionCreator = (newMessageText) => {
+    return {type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: newMessageText};
+};
+
+
+export const addMessageActonCreator = () => {
+    return {type: ADD_MESSAGE};
+};
+
 window.store = store;
 export default store;

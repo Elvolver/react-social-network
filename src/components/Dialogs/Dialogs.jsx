@@ -2,6 +2,7 @@ import React from "react";
 import classes from './Dialogs.module.css';
 import DialogItem from "../DialogItem/DialogItem";
 import Message from "../Message/Message";
+import {addMessageActonCreator, updateNewMessageTextActionCreator} from "../../redux/state";
 
 const Dialogs = (props) => {
 
@@ -12,12 +13,12 @@ const Dialogs = (props) => {
 
     let updateNewMessageText = () => {
         let newMessageText = newMessageElement.current.value;
-        let action = {type: 'UPDATE-NEW-MWSSAGE-TEXT', newMessageText: newMessageText};
+        let action = updateNewMessageTextActionCreator(newMessageText);
         props.dispatch(action);
     };
 
     let addMessage = () => {
-        let action = {type: 'ADD-MESSAGE'};
+        let action = addMessageActonCreator();
         props.dispatch(action);
     };
 
