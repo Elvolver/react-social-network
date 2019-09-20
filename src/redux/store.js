@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
+import navbarReducer from "./navbarReducer";
 
 let store = {
     _state: {
@@ -64,64 +63,12 @@ let store = {
     _callSybscriber() {
         console.log('state changed');
     },
-    _addPost() {
-        let post = {
-            id: 3, message: this._state.profilePage.newPostText, likesCount: 0
-        };
-        this._state.profilePage.posts.push(post);
-        this._updateNewPostText('');
-    },
-    _updateNewPostText(value) {
-        this._state.profilePage.newPostText = value;
-        this._callSybscriber(this._state);
-    },
-    _addMessage() {
-        let message = {
-            id: 4, message: this._state.dialogsPage.newMessageText
-        };
-        this._state.dialogsPage.messages.push(message);
-        this._updateNewMessageText('');
-    },
-    _updateNewMessageText(value) {
-        this._state.dialogsPage.newMessageText = value;
-        this._callSybscriber(this._state);
-    },
     dispatch(action) {
-
-        switch (action.type) {
-            case ADD_POST:
-                this._addPost();
-                break;
-            case UPDATE_NEW_POST_TEXT:
-                this._updateNewPostText(action.newPostText);
-                break;
-            case ADD_MESSAGE:
-                this._addMessage();
-                break;
-            case UPDATE_NEW_MESSAGE_TEXT:
-                this._updateNewMessageText(action.newMessageText);
-                break;
-            default:
-                console.log('not case for dispatch action.type');
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.navbar = navbarReducer(this._state.navbar, action);
+        this._callSybscriber();
     }
-};
-
-export const updateNewPostTextActionCreator = (newPostText) => {
-    return {type: UPDATE_NEW_POST_TEXT, newPostText: newPostText}
-};
-
-export const addPostActionCreator = () => {
-    return {type: ADD_POST}
-};
-
-export const updateNewMessageTextActionCreator = (newMessageText) => {
-    return {type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: newMessageText};
-};
-
-
-export const addMessageActonCreator = () => {
-    return {type: ADD_MESSAGE};
 };
 
 window.store = store;
