@@ -5,15 +5,10 @@ import store from "./redux/reduxStore";
 import ReactDOM from "react-dom";
 import App from "./App";
 
-const rerenderEntireTree = () => {
-    ReactDOM.render(<App store={store}
-                         state={store.getState()}
-                         dispatch={store.dispatch.bind(store)}
-    />, document.getElementById('root'));
-};
-
-rerenderEntireTree(store);
-store.subscribe(rerenderEntireTree);
+ReactDOM.render(<App store={store}
+                     state={store.getState()}
+                     dispatch={store.dispatch.bind(store)}
+/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
