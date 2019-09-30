@@ -7,6 +7,7 @@ const MyPosts = (props) => {
     const postsItems = props.posts.map(post => <Post id={post.id}
                                                      message={post.message}
                                                      likesCount={post.likesCount}
+                                                     key={post.id}
     />);
 
     const newPostElement = React.createRef();

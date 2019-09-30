@@ -14,48 +14,45 @@ const initialState = {
         {id: 2, message: 'How are you?'},
         {id: 3, message: 'Hello world'},
     ],
-    newMessageText: 'asd'
+    newMessageText: ''
 };
 
 const updateNewMessageText = (state, value) => {
-    let stateCopy = {...state};
-
-    stateCopy.newMessageText = value;
+    let stateCopy = {
+        ...state,
+        newMessageText: value
+    };
 
     return stateCopy;
 };
 
 const addMessage = (state) => {
-    let stateCopy = {...state};
 
-    let message = {
-        id: 4, message: stateCopy.newMessageText
+    let newMessage = {
+        id: 4, message: state.newMessageText
     };
 
-    stateCopy.messages = [...state.messages];
-    stateCopy.messages.push(message);
-
-    stateCopy = updateNewMessageText(stateCopy,'');
+    let stateCopy = {
+        ...state,
+        newMessageText: '',
+        messages: [...state.messages, {
+            id: 4, message: state.newMessageText
+        }]
+    };
 
     return stateCopy;
 };
-
-
 
 const dialogsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_MESSAGE:
             return addMessage(state);
-            break;
         case UPDATE_NEW_MESSAGE_TEXT:
             return updateNewMessageText(state, action.newMessageText);
-            break;
         default:
-            break;
+            return state;
     }
-
-    return state;
 };
 
 export const updateNewMessageTextActionCreator = (newMessageText) => {

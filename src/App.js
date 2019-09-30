@@ -9,13 +9,14 @@ import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {Provider} from 'react-redux'
+import Users from "./components/Users/Users";
 
 /*let routesData = [
     {path: '/dialogs', component: Dialogs},
     {path: '/profile', component: Profile},
     {path: '/news', component: News},
     {path: '/music', component: Music},
-    {path: '/settings', component: Settings}
+    {path: '/settings', component: Users}
 ];*/
 
 const App = (props) => {
@@ -27,9 +28,10 @@ const App = (props) => {
                         <Header/>
                         <Navbar state={props.state.navbar}/>
                         <div className='app-wrapper-content'>
-                            <Route path='/dialogs' render={() => <DialogsContainer />}
+                            <Route path='/dialogs' render={() => <DialogsContainer/>}
                             />
-                            <Route path='/profile' render={() => <Profile />}/>
+                            <Route path='/profile' render={() => <Profile/>}/>
+                            <Route path='/users' render={() => <Users/>}/>
                             <Route path='/news' render={() => <News/>}/>
                             <Route path='/music' render={() => <Music state={props.state.musicPage}/>}/>
                             <Route path='/settings' render={() => <Settings/>}/>
