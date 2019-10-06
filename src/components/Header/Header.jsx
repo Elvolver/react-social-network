@@ -7,7 +7,7 @@ const Header = () => {
         <div className={classes.headerLogo}>
             <img src='https://www.freepnglogos.com/uploads/batman-logo-images-pictures-10.png'/>
         </div>
-        <div className={classes.pageTitle}>Header</div>
+        <div className={classes.pageTitle}>Batman forever</div>
     </div>
     )
 }

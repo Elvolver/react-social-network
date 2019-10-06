@@ -6,7 +6,7 @@ const ProfileInfo = (props) => {
         <div>
             Profile
             <img
-                src='http://www.ox.ac.uk/sites/files/oxford/styles/ow_large_feature/public/field/field_image_main/Picture%20this.jpg?itok=1ZJwGrhE'/>
+                src='https://cheesecake.articleassets.meaww.com/105271/uploads/a88a5100-67fb-11e9-be86-e90fd24c620e_800_420.jpeg'/>
             <div>
                 ava + description
             </div>

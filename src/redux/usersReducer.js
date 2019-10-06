@@ -1,10 +1,11 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET_USERS'
+const SET_USERS = 'SET_USERS';
+
 
 const initialState = {
     users: [
-        {
+        /*{
             id: 1,
             photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Dmitry_Nagiev_2017_4.jpg/220px-Dmitry_Nagiev_2017_4.jpg',
             followed: false,
@@ -36,9 +37,11 @@ const initialState = {
                 city: 'Minsk',
                 country: 'Belarus'
             }
-        }
+        }*/
     ]
 };
+
+
 
 const usersReducer = (state = initialState, action) => {
 
@@ -64,7 +67,7 @@ const usersReducer = (state = initialState, action) => {
                 )
             };
         case SET_USERS:
-            return {...state, users: [...state.users, ...action.users]}
+            return {...state, users: [...state.users, ...action.users]};
         default:
             return state;
     }
@@ -80,6 +83,6 @@ export const unfollowActionCreator = (userId) => {
 
 export const setUsersActionCreator = (users) => {
     return {type: SET_USERS, users}
-}
+};
 
 export default usersReducer;
