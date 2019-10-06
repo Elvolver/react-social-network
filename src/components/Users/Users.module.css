@@ -1,4 +1,15 @@
 .usersPhoto {
-    width: 200px;
-    height: 200px;
+    width: 50px;
+    height: 50px;
+}
+
+.pagination {
+
+}
+
+.pagination span {
+}
+
+.paginationActive {
+    font-weight: bold;
 }
