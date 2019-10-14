@@ -4,13 +4,15 @@ import dialogsReducer from "./dialogsReducer";
 import navbarReducer from "./navbarReducer";
 import musicReducer from "./musicReducer";
 import usersReducer from "./usersReducer";
+import authReducer from "./authReducer";
 
 let reducers = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     usersPage: usersReducer,
     navbar: navbarReducer,
-    musicPage: musicReducer
+    musicPage: musicReducer,
+    auth: authReducer
 });
 
 let store = createStore(reducers);

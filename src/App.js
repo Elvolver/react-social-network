@@ -1,23 +1,15 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import {BrowserRouter, Route} from "react-router-dom";
 import Music from "./components/Music/Music";
-import Profile from "./components/Profile/Profile";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {Provider} from 'react-redux'
 import UsersContainer from "./components/Users/UsersContainer";
-
-/*let routesData = [
-    {path: '/dialogs', component: Dialogs},
-    {path: '/profile', component: Profile},
-    {path: '/news', component: News},
-    {path: '/music', component: Music},
-    {path: '/settings', component: Users}
-];*/
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = (props) => {
     return (
@@ -25,12 +17,12 @@ const App = (props) => {
             <Provider store={props.store}>
                 <div className="App">
                     <div className='wrapper'>
-                        <Header/>
+                        <HeaderContainer/>
                         <Navbar state={props.state.navbar}/>
                         <div className='app-wrapper-content'>
                             <Route path='/dialogs' render={() => <DialogsContainer/>}
                             />
-                            <Route path='/profile' render={() => <Profile/>}/>
+                            <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                             <Route path='/users' render={() => <UsersContainer/>}/>
                             <Route path='/news' render={() => <News/>}/>
                             <Route path='/music' render={() => <Music state={props.state.musicPage}/>}/>
@@ -41,6 +33,6 @@ const App = (props) => {
             </Provider>
         </BrowserRouter>
     );
-}
+};
 
 export default App;

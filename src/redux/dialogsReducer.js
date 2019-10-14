@@ -18,29 +18,21 @@ const initialState = {
 };
 
 const updateNewMessageText = (state, value) => {
-    let stateCopy = {
+    return {
         ...state,
         newMessageText: value
     };
-
-    return stateCopy;
 };
 
 const addMessage = (state) => {
 
-    let newMessage = {
-        id: 4, message: state.newMessageText
-    };
-
-    let stateCopy = {
+    return {
         ...state,
         newMessageText: '',
         messages: [...state.messages, {
             id: 4, message: state.newMessageText
         }]
     };
-
-    return stateCopy;
 };
 
 const dialogsReducer = (state = initialState, action) => {

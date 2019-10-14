@@ -7,7 +7,8 @@ const Friend = (props) => {
         <NavLink to={`/friends/${props.state.id}`}>
         <div className={classes.friend}>
             <div className={classes.avatar}>
-                <img src={props.state.avatar}/>
+
+                <img src={props.state.avatar} alt={props.state.name}/>
             </div>
             <div className={classes.name}>
                 {props.state.name}
@@ -15,6 +16,6 @@ const Friend = (props) => {
         </div>
         </NavLink>
     )
-}
+};
 
 export default Friend;

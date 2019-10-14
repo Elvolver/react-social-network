@@ -23,7 +23,6 @@ const MyPosts = (props) => {
 
     return (
         <div className={classes.postsBlock}>
-            {console.log(props)}
             <h3>My posts</h3>
             <div>
                 <textarea ref={newPostElement} onChange={updateNewPostText} value={props.newPostText}/>
