@@ -8,6 +8,6 @@ const Track = (props) => {
             <NavLink to={`/music/${props.id}`} activeClassName={classes.active}>{props.author} - {props.track} ({props.duration})</NavLink>
         </div>
     )
-}
+};
 
 export default Track;

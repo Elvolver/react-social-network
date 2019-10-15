@@ -28,6 +28,6 @@ const Navbar = (props) => {
             <Friends state={props.state.friends}/>
         </nav>
     )
-}
+};
 
 export default Navbar;

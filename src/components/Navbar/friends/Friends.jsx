@@ -14,6 +14,6 @@ const Friends = (props) => {
             {friends}
         </div>
     )
-}
+};
 
 export default Friends;
