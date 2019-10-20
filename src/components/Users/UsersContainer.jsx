@@ -2,60 +2,21 @@ import React from 'react';
 import {connect} from "react-redux";
 import {
     follow,
-    setCurrentPage,
-    setFollowingProgress,
-    setIsFetching,
-    setTotalUsersCount,
-    setUsers,
+    getUsers,
     unfollow
 } from "../../redux/usersReducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import {UsersAPI} from "../../api/api";
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.getUsersCount();
-        this.updateUsers(this.props.pageNumber);
+        this.calcPageCount();
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
-    getUsersCount = () => {
-        this.props.setIsFetching(true);
-        UsersAPI.getUsers(this.props.pageSize, this.props.pageSize)
-            .then(data => {
-                this.props.setTotalUsersCount(data.totalCount);
-                this.props.setIsFetching(false);
-            }).catch(error => {
-                console.log(error)
-        });
-    };
-
-    calcPageCount = () => {
-        return Math.ceil(this.props.totalUserCount / this.props.pageSize);
-    };
-
     onPageChanged = (pageNumber) => {
-        if (pageNumber !== this.props.currentPage) {
-            this.setCurrentPage(pageNumber);
-            this.props.setIsFetching(true);
-            this.updateUsers(pageNumber);
-        }
-    };
-
-    updateUsers(pageNumber) {
-        UsersAPI.getUsers(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.setIsFetching(false);
-                this.props.setUsers(data.items)
-            })
-            .catch(error => {
-                console.log(error)
-            });
-    };
-
-    setCurrentPage = (p) => {
-        this.props.setCurrentPage(p);
+        this.props.getUsers(pageNumber, this.props.pageSize);
     };
 
     render() {
@@ -67,11 +28,14 @@ class UsersContainer extends React.Component {
                    unfollow={this.props.unfollow}
                    calcPageCount={this.calcPageCount}
                    onPageChanged={this.onPageChanged}
-                   setFollowingProgress={this.props.setFollowingProgress}
                    followingInProgress={this.props.followingInProgress}
             />
         </>
     }
+
+    calcPageCount = () => {
+        return Math.ceil(this.props.totalUserCount / this.props.pageSize);
+    };
 
 }
 
@@ -89,9 +53,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     follow,
     unfollow,
-    setUsers,
-    setTotalUsersCount,
-    setCurrentPage,
-    setIsFetching,
-    setFollowingProgress
+    getUsers
 })(UsersContainer);

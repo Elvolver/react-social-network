@@ -14,31 +14,50 @@ const instance = axios.create({
 
 export const UsersAPI = {
     getUsers: (currentPage, pageSize) => instance
-            .get(`users?page=${currentPage}&count=${pageSize}`)
-            .then(response => response.data)
-            .catch(error => console.log(error)),
+        .get(`users?page=${currentPage}&count=${pageSize}`)
+        .then(response => response.data)
+        .catch(error => {
+            alert(error);
+            console.log(error);
+            return error;
+        }),
 
     unfollow: (userId) => instance
-            .delete(`follow/${userId}`)
-            .then(response => response.data)
-            .catch(error => console.log(error)),
+        .delete(`follow/${userId}`)
+        .then(response => response.data)
+        .catch(error => {
+            alert(error);
+            console.log(error)
+            return error;
+        }),
 
     follow: (UserId) => instance
-            .post(`follow/${UserId}`)
-            .then(response => response.data)
-            .catch(error => console.log(error))
+        .post(`follow/${UserId}`)
+        .then(response => response.data)
+        .catch(error => {
+            alert(error);
+            console.log(error);
+            return error;
+        })
 };
 
 export const ProfileAPI = {
     getProfile: (userId) => instance
-            .get(`profile/${userId}`)
-            .then(response => response.data)
-            .catch(error => console.log(error))
+        .get(`profile/${userId}`)
+        .then(response => response.data)
+        .catch(error => {
+            alert(error);
+            console.log(error)
+        })
 };
 
 export const AuthAPI = {
     authMe: () => instance
         .get(`auth/me`)
         .then(response => response.data)
-        .catch(error => console.log(error))
+        .catch(error => {
+            alert(error);
+            console.log(error);
+            return error;
+        })
 };

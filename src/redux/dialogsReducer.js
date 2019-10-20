@@ -17,41 +17,32 @@ const initialState = {
     newMessageText: ''
 };
 
-const updateNewMessageText = (state, value) => {
-    return {
-        ...state,
-        newMessageText: value
-    };
-};
-
-const addMessage = (state) => {
-
-    return {
-        ...state,
-        newMessageText: '',
-        messages: [...state.messages, {
-            id: 4, message: state.newMessageText
-        }]
-    };
-};
-
 const dialogsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_MESSAGE:
-            return addMessage(state);
+            return {
+                ...state,
+                newMessageText: '',
+                messages: [...state.messages, {
+                    id: 4, message: state.newMessageText
+                }]
+            };
         case UPDATE_NEW_MESSAGE_TEXT:
-            return updateNewMessageText(state, action.newMessageText);
+            return {
+                ...state,
+                newMessageText: action.newMessageText
+            };
         default:
             return state;
     }
 };
 
-export const updateNewMessageTextActionCreator = (newMessageText) => {
+export const updateNewMessageText = (newMessageText) => {
     return {type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: newMessageText};
 };
 
-export const addMessageActonCreator = () => {
+export const addMessage = () => {
     return {type: ADD_MESSAGE};
 };
 

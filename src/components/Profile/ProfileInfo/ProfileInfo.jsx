@@ -7,9 +7,9 @@ const ProfileInfo = (props) => {
         return <Preloader/>
     }
     return (
-        <div>
+        <div >
             Profile
-            <img
+            <img className={styles.wallpaper}
                 src='https://cheesecake.articleassets.meaww.com/105271/uploads/a88a5100-67fb-11e9-be86-e90fd24c620e_800_420.jpeg'
 
             alt='img'/>

@@ -10,6 +10,7 @@ import {Provider} from 'react-redux'
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import LoginPage from "./Login/Login";
 
 const App = (props) => {
     return (
@@ -27,6 +28,7 @@ const App = (props) => {
                             <Route path='/news' render={() => <News/>}/>
                             <Route path='/music' render={() => <Music state={props.state.musicPage}/>}/>
                             <Route path='/settings' render={() => <Settings/>}/>
+                            <Route path='/login' render={() => <LoginPage/>}/>
                         </div>
                     </div>
                 </div>

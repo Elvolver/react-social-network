@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Users.module.css";
 import userStub from "../../assets/images/userStub.png";
 import {NavLink} from "react-router-dom";
-import {UsersAPI} from "../../api/api";
 
 const Users = (props) => {
     let pages = [];
@@ -35,35 +34,16 @@ const Users = (props) => {
 
                         </div>
                         <div>
-                            {u.followed ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                debugger
-                                props.setFollowingProgress(true, u.id);
-                                    UsersAPI.unfollow(u.id).then(data => {
-                                        if (data.resultCode === 0) {
-                                            props.unfollow(u.id);
-                                            props.setFollowingProgress(false, u.id);
-                                        }
-                                    }).catch(error => {
-                                        console.log(error);
-                                        props.setFollowingProgress(false, u.id);
-                                    });
+                            {u.followed ?
+                                <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                        onClick={() => {
+                                            props.unfollow(u.id)
 
-
-                                }}>Отписаться</button>
-                                : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                    debugger
-                                    props.setFollowingProgress(true, u.id);
-                                    UsersAPI.follow(u.id).then(data => {
-                                        if (data.resultCode === 0) {
-                                            props.follow(u.id);
-                                            props.setFollowingProgress(false, u.id);
-                                        }
-                                    }).catch(error => {
-                                        console.log(error);
-                                        props.setFollowingProgress(false, u.id);
-                                    });
-
-                                }}>Подписаться</button>
+                                        }}>Отписаться</button>
+                                : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                          onClick={() => {
+                                              props.follow(u.id)
+                                          }}>Подписаться</button>
                             }
                         </div>
                     </span>
