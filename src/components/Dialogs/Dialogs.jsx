@@ -2,6 +2,7 @@ import React from "react";
 import classes from './Dialogs.module.css';
 import DialogItem from "../DialogItem/DialogItem";
 import Message from "../Message/Message";
+import DialogForm from "./DialogsForm";
 
 const Dialogs = (props) => {
 
@@ -14,15 +15,8 @@ const Dialogs = (props) => {
                                                                  key={message.id}
     />);
 
-    const newMessageElement = React.createRef();
-
-    let updateNewMessageText = () => {
-        let newMessageText = newMessageElement.current.value;
-        props.updateNewMessageText(newMessageText);
-    };
-
-    let addMessage = () => {
-        props.addMessage()
+    let onSubmit = (formData) => {
+        props.addMessage(formData.message)
     };
 
     return (
@@ -34,11 +28,7 @@ const Dialogs = (props) => {
                 {messagesItems}
             </div>
             <div>
-                <textarea ref={newMessageElement}
-                          onChange={updateNewMessageText}
-                          value={props.newMessageText}
-                />
-                <button onClick={addMessage}>Add message</button>
+                <DialogForm onSubmit={onSubmit} />
             </div>
         </div>
     )

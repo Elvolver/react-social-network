@@ -1,6 +1,7 @@
 import React from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
+import NewReduxPostForm from "./Post/NewPostForm";
 
 const MyPosts = (props) => {
 
@@ -10,26 +11,14 @@ const MyPosts = (props) => {
                                                      key={post.id}
     />);
 
-    const newPostElement = React.createRef();
-
-    const updateNewPostText = () => {
-        let newPostText = newPostElement.current.value;
-        props.updateNewPostText(newPostText)
-    };
-
-    const addPost = () => {
-        props.addPost();
+    const onSubmit = (formData) => {
+        props.sendPost(formData.newPostText);
     };
 
     return (
         <div className={classes.postsBlock}>
             <h3>My posts</h3>
-            <div>
-                <textarea ref={newPostElement} onChange={updateNewPostText} value={props.newPostText}/>
-            </div>
-            <div>
-                <button onClick={addPost}>Add post</button>
-            </div>
+            <NewReduxPostForm onSubmit={onSubmit}/>
             <div className={classes.posts}>
                 {postsItems}
             </div>

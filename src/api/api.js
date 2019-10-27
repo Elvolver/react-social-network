@@ -17,7 +17,6 @@ export const UsersAPI = {
         .get(`users?page=${currentPage}&count=${pageSize}`)
         .then(response => response.data)
         .catch(error => {
-            alert(error);
             console.log(error);
             return error;
         }),
@@ -26,7 +25,6 @@ export const UsersAPI = {
         .delete(`follow/${userId}`)
         .then(response => response.data)
         .catch(error => {
-            alert(error);
             console.log(error)
             return error;
         }),
@@ -35,7 +33,6 @@ export const UsersAPI = {
         .post(`follow/${UserId}`)
         .then(response => response.data)
         .catch(error => {
-            alert(error);
             console.log(error);
             return error;
         })
@@ -46,7 +43,18 @@ export const ProfileAPI = {
         .get(`profile/${userId}`)
         .then(response => response.data)
         .catch(error => {
-            alert(error);
+            console.log(error)
+        }),
+    getStatus: (userId) => instance
+        .get(`profile/status/${userId}`)
+        .then(response => response.data)
+        .catch(error => {
+            console.log(error)
+        }),
+    setStatus: (status) => instance
+        .put(`profile/status`, {status})
+        .then(response => response.data)
+        .catch(error => {
             console.log(error)
         })
 };
@@ -56,7 +64,6 @@ export const AuthAPI = {
         .get(`auth/me`)
         .then(response => response.data)
         .catch(error => {
-            alert(error);
             console.log(error);
             return error;
         })
