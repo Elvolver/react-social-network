@@ -7,7 +7,7 @@ const initialState = {
     ]
 };
 
-const musicReducer = (state = initialState, action) => {
+const musicReducer = (state = initialState) => {
     return state;
 };
 

@@ -25,7 +25,7 @@ export const UsersAPI = {
         .delete(`follow/${userId}`)
         .then(response => response.data)
         .catch(error => {
-            console.log(error)
+            console.log(error);
             return error;
         }),
 
@@ -60,8 +60,21 @@ export const ProfileAPI = {
 };
 
 export const AuthAPI = {
-    authMe: () => instance
-        .get(`auth/me`)
+    authMe: () => instance.get(`auth/me`)
+        .then(response => response.data)
+        .catch(error => {
+            console.log(error);
+            return error;
+        }),
+
+    login: (email, password, rememberMe, captcha) => instance.post(`auth/login`, {email, password, rememberMe, captcha})
+        .then(response => response.data)
+        .catch(error => {
+            console.log(error);
+            return error;
+        }),
+
+    logout: () => instance.delete(`auth/login`)
         .then(response => response.data)
         .catch(error => {
             console.log(error);

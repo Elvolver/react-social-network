@@ -48,11 +48,12 @@ const mapStateToProps = (state) => {
         totalUserCount: state.usersPage.totalUserCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        followingInProgress: state.usersPage.followingInProgress,
+        isAuth: state.auth.isAuth
     }
 };
 
 export default compose(
-    withAuthRedirect,
-    connect(mapStateToProps, {follow, unfollow, getUsers})
+    connect(mapStateToProps, {follow, unfollow, getUsers}),
+    withAuthRedirect
 )(UsersContainer);

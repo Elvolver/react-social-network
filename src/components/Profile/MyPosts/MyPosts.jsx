@@ -1,5 +1,4 @@
 import React from "react";
-import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
 import NewReduxPostForm from "./Post/NewPostForm";
 
@@ -15,15 +14,14 @@ const MyPosts = (props) => {
         props.sendPost(formData.newPostText);
     };
 
-    return (
-        <div className={classes.postsBlock}>
-            <h3>My posts</h3>
-            <NewReduxPostForm onSubmit={onSubmit}/>
-            <div className={classes.posts}>
-                {postsItems}
-            </div>
+    return <div className={''}>
+        <h3>My posts</h3>
+        <NewReduxPostForm onSubmit={onSubmit}/>
+        <div className={''}>
+            {postsItems}
         </div>
-    )
+    </div>
+
 };
 
 export default MyPosts;

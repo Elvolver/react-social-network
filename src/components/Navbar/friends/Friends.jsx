@@ -1,5 +1,4 @@
 import React from "react";
-import classes from './Friends.module.css';
 import Friend from "./Friend/Friend";
 
 const Friends = (props) => {
@@ -9,7 +8,7 @@ const Friends = (props) => {
     />);
 
     return (
-        <div className={classes.friends}>
+        <div className={''}>
             <h1>Friends</h1>
             {friends}
         </div>

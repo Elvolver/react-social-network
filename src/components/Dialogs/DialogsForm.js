@@ -13,6 +13,6 @@ const DialogForm = props => {
             <button >Add message</button>
         </form>
     )
-}
+};
 
 export default reduxForm({form: 'dialogMessage'})(DialogForm);
