@@ -7,8 +7,7 @@ import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
 
-    setDefaultIdIfNotExists() {
-        debugger
+    getCurrentProfileId() {
         if (this.props.match.params.userId) return this.props.match.params.userId;
         if (this.props.auth.id) return this.props.auth.id;
         this.props.history.push('/login')
@@ -16,15 +15,14 @@ class ProfileContainer extends React.Component {
     }
 
     componentDidMount() {
-        const userId = this.setDefaultIdIfNotExists();
+        const userId = this.getCurrentProfileId();
         this.props.getProfile(userId);
         this.props.getUserStatus(userId)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.profile) {
-            let newUserId = this.setDefaultIdIfNotExists();
-            //TODO Убрать этот костыль
+            let newUserId = this.getCurrentProfileId();
             if (newUserId !== prevProps.profile.userId.toString()) {
                 this.props.getProfile(newUserId);
                 this.props.getUserStatus(newUserId)
@@ -35,7 +33,8 @@ class ProfileContainer extends React.Component {
     render() {
         if (this.props.isAuth === false) return <Redirect to={'/login'}/>
         return <div>
-            <Profile profile={this.props.profile} status={this.props.status}
+            <Profile profile={this.props.profile}
+                     status={this.props.status}
                      updateStatus={this.props.updateStatus}/>
         </div>
     }
