@@ -2,12 +2,13 @@ import React from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getProfile, getUserStatus, sendPost, updateStatus} from "../../redux/profileReducer";
-import {Redirect, withRouter} from "react-router-dom";
 import {compose} from "redux";
+import {withRouter} from "react-router-dom";
 
 class ProfileContainer extends React.Component {
 
     getCurrentProfileId() {
+        debugger
         if (this.props.match.params.userId) return this.props.match.params.userId;
         if (this.props.auth.id) return this.props.auth.id;
         this.props.history.push('/login')
@@ -31,7 +32,6 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-        if (this.props.isAuth === false) return <Redirect to={'/login'}/>
         return <div>
             <Profile profile={this.props.profile}
                      status={this.props.status}

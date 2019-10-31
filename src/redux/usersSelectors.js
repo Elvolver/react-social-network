@@ -1,7 +1,6 @@
 import {createSelector} from "reselect";
 
 export const getUsersDump = (state) => {
-    debugger
     return state.usersPage.users;
 };
 
