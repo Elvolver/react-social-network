@@ -8,7 +8,6 @@ import {withRouter} from "react-router-dom";
 class ProfileContainer extends React.Component {
 
     getCurrentProfileId() {
-        debugger
         if (this.props.match.params.userId) return this.props.match.params.userId;
         if (this.props.auth.id) return this.props.auth.id;
         this.props.history.push('/login')
